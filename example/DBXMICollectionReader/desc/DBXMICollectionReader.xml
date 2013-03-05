@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collectionReaderDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <implementationName>org.barcelonamedia.uima.reader.DBXMIReader.DBXMICollectionReader</implementationName>
+  <processingResourceMetaData>
+    <name>Data Base Collection Reader</name>
+    <description>Reads files from a database, specified in the parameters.</description>
+    <version>0.1</version>
+    <vendor/>
+    <configurationParameters>
+      <configurationParameter>
+        <name>DBMS</name>
+        <description>DBMS to be used, for example: MySQL, PostgreSQL, etc.</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>Server</name>
+        <description>Server where the DBMS is being hosted.</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>Port</name>
+        <description>Port where the DBMS is listening.</description>
+        <type>Integer</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>Database</name>
+        <description>Name of the database.</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>User</name>
+        <description>Database user.</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>Password</name>
+        <description>Password of the database user.</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>sql_select</name>
+        <description>SQL statement for retrieving document data and id from a database. 
+Statement must provide the document id as "id" and the document text as "text".</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>FailOnUnknownType</name>
+        <description>Indicates if the execution fails if an encountered type is unknown.</description>
+        <type>Boolean</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>compression</name>
+        <description>Boolean parameter indicating whether XMI decompression is to be performed or not.</description>
+        <type>Boolean</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>enableDocCounter</name>
+        <description>Enables/Disables checking of number of documents to be processed. This is useful for some cases in which SQL sentence are quite expensive.</description>
+        <type>Boolean</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+    </configurationParameters>
+    <configurationParameterSettings>
+      <nameValuePair>
+        <name>DBMS</name>
+        <value>
+          <string>MySQL</string>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>Server</name>
+        <value>
+          <string>localhost</string>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>Port</name>
+        <value>
+          <integer>3306</integer>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>User</name>
+        <value>
+          <string>uimauser</string>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>sql_select</name>
+        <value>
+          <string>SELECT document_id as id, document_data as text FROM uima_test</string>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>Database</name>
+        <value>
+          <string>uima_test</string>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>Password</name>
+        <value>
+          <string>uimapass</string>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>FailOnUnknownType</name>
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>compression</name>
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>enableDocCounter</name>
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
+    <typeSystemDescription>
+      <imports>
+        <import name="org.apache.uima.examples.SourceDocumentInformation"/>
+      </imports>
+    </typeSystemDescription>
+    <typePriorities/>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs/>
+        <outputs>
+          <type allAnnotatorFeatures="true">org.apache.uima.examples.SourceDocumentInformation</type>
+        </outputs>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>false</multipleDeploymentAllowed>
+      <outputsNewCASes>true</outputsNewCASes>
+    </operationalProperties>
+  </processingResourceMetaData>
+  <resourceManagerConfiguration/>
+</collectionReaderDescription>
